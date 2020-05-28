@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 # Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }

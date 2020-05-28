@@ -6,14 +6,22 @@ class Friendship < ApplicationRecord
 
   scope :pending_friendships_request, lambda { |user_id|
     joins(:sender)
-    .where(receiver_id: user_id, status: 'pending')
-    .select('users.id as sender_id, users.name as sender')
-    .order('friendships.created_at asc')
+      .where(receiver_id: user_id, status: 'pending')
+      .select('users.id as sender_id, users.name as sender')
+      .order('friendships.created_at asc')
   }
 
   scope :pending_friendships_request_count, lambda { |user_id|
     joins(:sender)
-    .where(receiver_id: user_id, status: 'pending')
-    .count
+      .where(receiver_id: user_id, status: 'pending')
+      .count
+  }
+
+  scope :friends?, lambda { |sender_id, receiver_id|
+    where("(sender_id = #{sender_id} and receiver_id = #{receiver_id})
+    or (sender_id = #{receiver_id} and receiver_id = #{sender_id})
+    and status in ('pending', 'rejected', 'accepted')
+    ")
+      .count
   }
 end
