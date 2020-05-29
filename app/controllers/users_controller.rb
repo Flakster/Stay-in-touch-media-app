@@ -14,10 +14,4 @@ class UsersController < ApplicationController
     @posts = @user.posts.ordered_by_most_recent
     request_friendship_caller_set(user_path(@user.id))
   end
-
-  def request_friendship
-    receiver_id = params[:receiver].to_i
-    Friendship.create(sender_id: current_user.id, receiver_id: receiver_id, status: 'pending')
-    redirect_to request_friendship_caller
-  end
 end
