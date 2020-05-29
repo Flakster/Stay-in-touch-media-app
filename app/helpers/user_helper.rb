@@ -13,7 +13,7 @@ module UserHelper
     return if current_user.id == user_id
 
     if can_request_friendship?(user_id)
-      render html: link_to('Invite to friendship',  friendships_path(receiver: user_id), class: 'profile-link',
+      render html: link_to('Invite to friendship',  friendships_path(receiver: user_id), class: 'request-link',
       method: :post)
     else
       f = Friendship.friendship(current_user.id, user_id).first
