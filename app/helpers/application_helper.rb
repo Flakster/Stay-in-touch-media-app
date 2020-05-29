@@ -19,6 +19,6 @@ module ApplicationHelper
   end
 
   def can_request_friendship?(receiver_id)
-    Friendship.friends?(current_user.id, receiver_id).zero?
+    Friendship.friendship(current_user.id, receiver_id).count.zero?
   end
 end

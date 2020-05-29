@@ -44,7 +44,7 @@ RSpec.describe Friendship, type: :model do
   context 'Sending friendship requests' do
     before do
       friend = [user_1.id, user_2.id, user_3.id]
-      status = %w[pending accepted rejected]
+      status = %w[pending friends rejected]
       3.times do |index|
         Friendship.create(sender_id: sender.id,
                           receiver_id: friend[index],
@@ -53,19 +53,19 @@ RSpec.describe Friendship, type: :model do
     end
 
     it 'can\'t send friendship request if he or she already send one' do
-      expect(Friendship.friends?(sender.id, user_1.id)).to be 1
+      expect(Friendship.friendship(sender.id, user_1.id).first.status).to match 'pending'
     end
 
     it 'can\'t send friendship request if they are already friends' do
-      expect(Friendship.friends?(sender.id, user_2.id)).to be 1
+      expect(Friendship.friendship(sender.id, user_2.id).first.status).to match 'friends'
     end
 
     it 'can\'t send friendship request if the receiver user have rejected a previous request' do
-      expect(Friendship.friends?(sender.id, user_3.id)).to be 1
+      expect(Friendship.friendship(sender.id, user_3.id).first.status).to match 'rejected'
     end
 
     it 'can send friendship request if there is no previous request' do
-      expect(Friendship.friends?(sender.id, user_4.id)).to be 0
+      expect(Friendship.friendship(sender.id, user_4.id).count).to be 0
     end
   end
 end
