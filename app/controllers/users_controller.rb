@@ -18,5 +18,4 @@ class UsersController < ApplicationController
   def notifications
     @pending = Friendship.pending_friendships_request(current_user.id)
   end
-
 end

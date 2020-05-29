@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FriendshipsController < ApplicationController
   include UserHelper
 
@@ -13,4 +15,3 @@ class FriendshipsController < ApplicationController
     redirect_to users_notifications_path
   end
 end
-  

@@ -18,7 +18,7 @@ class Friendship < ApplicationRecord
   }
 
   scope :friendship, lambda { |sender_id, receiver_id|
-   where("(sender_id = #{sender_id} and receiver_id = #{receiver_id})
+    where("(sender_id = #{sender_id} and receiver_id = #{receiver_id})
     or (sender_id = #{receiver_id} and receiver_id = #{sender_id})
     ")
   }
