@@ -1,0 +1,12 @@
+<h1>Your pending friendship requests</h1>
+
+<ul>
+<% @pending.each do |request| %>
+    <li>
+    <%= link_to  request.sender.name, user_path(request.sender_id) %>
+    <%= link_to 'Accept', friendship_path(id: request.friendship_id, status: 'friends'), method: :put %>
+    <%= link_to 'Reject',friendship_path(id: request.friendship_id, status: 'rejected'), method: :put %>
+
+    </li>
+<% end %>
+</ul> 

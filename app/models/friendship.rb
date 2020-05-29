@@ -7,7 +7,7 @@ class Friendship < ApplicationRecord
   scope :pending_friendships_request, lambda { |user_id|
     joins(:sender)
       .where(receiver_id: user_id, status: 'pending')
-      .select('users.id as sender_id, users.name as sender')
+      .select('friendships.id as friendship_id, users.id as sender_id, users.name as sender')
       .order('friendships.created_at asc')
   }
 

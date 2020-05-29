@@ -14,4 +14,9 @@ class UsersController < ApplicationController
     @posts = @user.posts.ordered_by_most_recent
     request_friendship_caller_set(user_path(@user.id))
   end
+
+  def notifications
+    @pending = Friendship.pending_friendships_request(current_user.id)
+  end
+
 end
