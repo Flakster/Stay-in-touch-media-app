@@ -19,8 +19,17 @@
         </div>
       </div>
       <% if current_user %>
-        <%= link_to  "Notifications (#{Friendship.pending_friendships_request_count(current_user.id)})", users_notifications_path %>
-        <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+        <div class="menu">
+          <div class="menu-item">
+            <%= link_to current_user.name, current_user%>
+          </div>
+          <div class="menu-item">
+            <%= link_to  "Notifications (#{Friendship.pending_friendships_request_count(current_user.id)})", users_notifications_path %>
+          </div>
+          <div class="menu-item">
+            <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+          </div>
+        </div>
       <% else %>
         <%= link_to 'Sign in', user_session_path %>
       <% end %>

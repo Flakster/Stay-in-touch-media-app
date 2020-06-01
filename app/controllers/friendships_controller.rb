@@ -12,6 +12,10 @@ class FriendshipsController < ApplicationController
 
   def update
     f = Friendship.find(params[:id])
+    p '*' * 70
+    p current_user.id
+    p f.sender_id
+    p '*' * 70
     f1 = Friendship.where(sender_id: current_user.id, receiver_id: f.sender_id).first
     f.update(status: params[:status])
     f1.update(status: params[:status])
