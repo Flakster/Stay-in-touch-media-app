@@ -11,8 +11,6 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :friendship_senders, foreign_key: :receiver_id, class_name: 'Friendship', dependent: :destroy
-  has_many :senders, through: :friendship_senders, source: :sender
-  has_many :friendship_receivers, foreign_key: :sender_id, class_name: 'Friendship', dependent: :destroy
-  has_many :receivers, through: :friendship_receivers, source: :receiver
+  has_many :friendships, foreign_key: 'sender_id'
+  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'receiver_id'
 end
