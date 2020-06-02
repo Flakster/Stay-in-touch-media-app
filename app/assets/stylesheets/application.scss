@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+ @import "bulma";
+
+ .card-extra {
+   width: 50vw;
+   margin-bottom: 2rem;
+ }
