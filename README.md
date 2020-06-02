@@ -4,22 +4,22 @@
 
 1. As a guest user:
 
-  1.1. I want to be able to create account/log in.
-  1.2. I can see only “Sign in” and “Sign out” page.
+   1. I want to be able to create account/log in.
+   2. I can see only “Sign in” and “Sign out” page.
 
 2. As a logged-in user:
 
-  2.1. I want to be able to see all users list.
-  2.2. I want to be able to see selected user page with their user name and all posts written by them (the most recent posts on the top).
-  2.3. I want to be able to send a friendship invitation.
-  2.4. I want to see a button “Invite to friendship” next to the name of user who is not my friend yet - on both users’ list and single user page.
-  2.5. I want to be able to see pending friendship invitations sent to me from other users.
-  2.6. I want to be able to accept or reject friendships invitation.
-  2.7. I want to be able to create new posts (text only).
-  2.7 I want to be able to like/dislike posts (but I can like single post only once).
-  2.8. I want to be able to add comments to posts.
-  2.9. I want to be able to see “Timeline” page with posts (with number of likes and comments) written by me and all my friends (the most recent posts on the top).
-  2.10. Timeline page should be the root page of the app.
+   1. I want to be able to see all users list.
+   2. I want to be able to see selected user page with their user name and all posts written by them (the most recent posts on the top).
+   3. I want to be able to send a friendship invitation.
+   4. I want to see a button “Invite to friendship” next to the name of user who is not my friend yet - on both users’ list and single user page.
+   5. I want to be able to see pending friendship invitations sent to me from other users.
+   6. I want to be able to accept or reject friendships invitation.
+   7. I want to be able to create new posts (text only).
+   8. I want to be able to like/dislike posts (but I can like single post only once).
+   9. I want to be able to add comments to posts.
+   10. I want to be able to see “Timeline” page with posts (with number of likes and comments) written by me and all my friends (the most recent posts on the top).
+   11. Timeline page should be the root page of the app.
 
 
 ## Built With
@@ -34,6 +34,12 @@
 
   Will be available soon
 
+### Prerequisites
+
+- Ruby: 2.7.0
+- Rails: 5.2.4
+- Postgres: >=9.5
+
 
 ## Getting Started
 
@@ -44,14 +50,14 @@ To get a local copy up and running follow these simple example steps
   ```
   git clone https://github.com/Flakster/ror-social-scaffold.git
   ```
-
-### Prerequisites
-
-Ruby: 2.7.0
-Rails: 5.2.4
-Postgres: >=9.5
+- Change directory to ror-Flakster-social
 
 ### Setup
+
+If you have another ruby version and have rbenv, you can run:
+```
+  rbenv install 2.7.0
+```
 
 Install gems with:
 
