@@ -1,50 +1,51 @@
 AllCops:
   Exclude:
+    - "bin/*"
     - "db/**/*"
-    - "bin/*" 
     - "config/**/*"
     - "Guardfile"
     - "Rakefile"
-    - "README.md"
+    - "Gemfile"
+    - "config*"
     - "node_modules/**/*"
-
+    - "app/channels/**/*"
+    - "app/node/**/*"
+    - "app/mailers/**/*"
+    - "app/jobs/**/*"
+    - "test/**/*"
   DisplayCopNames: true
 
 Layout/LineLength:
   Max: 120
 Metrics/MethodLength:
-  Include:
-    - "app/controllers/*"
-    - "app/models/*"
+  Include: ["app/controllers/*"]
   Max: 20
 Metrics/AbcSize:
-  Include:
-    - "app/controllers/*"
-    - "app/models/*"
-  Max: 50
+  Include: ["app/controllers/*"]
+  Max: 30
 Metrics/ClassLength:
   Max: 150
 Metrics/BlockLength:
-  ExcludedMethods: ['describe']
-  Max: 30
+  ExcludedMethods: ["describe"]
 
 Style/Documentation:
   Enabled: false
 Style/ClassAndModuleChildren:
   Enabled: false
-Style/EachForSimpleLoop:
-  Enabled: false
-Style/AndOr:
-  Enabled: false
-Style/DefWithParentheses:
-  Enabled: false
-Style/FrozenStringLiteralComment:
-  EnforcedStyle: never
 
-Layout/HashAlignment:
-  EnforcedColonStyle: key
 Layout/ExtraSpacing:
   AllowForAlignment: false
 Layout/MultilineMethodCallIndentation:
   Enabled: true
   EnforcedStyle: indented
+
+Lint/RaiseException:
+  Enabled: false
+Lint/StructNewOverride:
+  Enabled: false
+Style/HashEachMethods:
+  Enabled: false
+Style/HashTransformKeys:
+  Enabled: false
+Style/HashTransformValues:
+  Enabled: false

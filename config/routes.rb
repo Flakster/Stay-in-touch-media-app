@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
   root 'posts#index'
-
+  resources :friendships, only: %i[create update]
   devise_for :users
-
-  resources :users, only: [:index, :show]
+  get 'users/notifications'
+  resources :users, only: [:index, :show, :notifications]
   resources :posts, only: [:index, :create] do
     resources :comments, only: [:create]
     resources :likes, only: [:create, :destroy]
