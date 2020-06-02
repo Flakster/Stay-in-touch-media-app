@@ -14,7 +14,8 @@ module UserHelper
 
     if can_request_friendship?(user_id)
       render html: link_to('Invite to friendship', friendships_path(receiver: user_id), class: 'request-link',
-                                                                                        method: :post)
+                                                                                        method: :post,
+                                                                                        remote: true)
     else
       f = Friendship.friendship(current_user.id, user_id).first
       render html: f.status.capitalize unless f.status == 'rejected' || f.status == 'sent'

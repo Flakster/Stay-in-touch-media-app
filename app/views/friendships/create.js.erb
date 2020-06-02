@@ -1,0 +1,9 @@
+$('.request-link').on ('ajax:success', request_friendship_success);
+
+function request_friendship_success(event, data) {
+    var pending = document.createElement("p");
+    pending.innerHTML = "Pending"
+    $(this).after(pending)
+    $(this).remove()
+    console.log(event)
+}

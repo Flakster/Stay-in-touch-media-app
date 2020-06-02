@@ -7,7 +7,10 @@ class FriendshipsController < ApplicationController
     receiver_id = params[:receiver].to_i
     Friendship.create(sender_id: current_user.id, receiver_id: receiver_id, status: 'pending')
     Friendship.create(sender_id: receiver_id, receiver_id: current_user.id, status: 'sent')
-    redirect_to request_friendship_caller
+    respond_to do |format|
+      format.html { redirect_to request_friendship_caller, notice: 'friendship request sended!' }
+      format.js
+    end
   end
 
   def update
@@ -16,5 +19,9 @@ class FriendshipsController < ApplicationController
     f.update(status: params[:status])
     f1.update(status: params[:status])
     redirect_to users_notifications_path
+    respond_to do |format|
+      format.html { redirect_to users_notifications_path, notice: "friendship request #{params[:status]}!" }
+      format.js
+    end
   end
 end
