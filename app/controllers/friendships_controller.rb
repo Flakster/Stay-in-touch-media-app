@@ -18,7 +18,6 @@ class FriendshipsController < ApplicationController
     f1 = Friendship.where(sender_id: current_user.id, receiver_id: f.sender_id).first
     f.update(status: params[:status])
     f1.update(status: params[:status])
-    redirect_to users_notifications_path
     respond_to do |format|
       format.html { redirect_to users_notifications_path, notice: "friendship request #{params[:status]}!" }
       format.js
