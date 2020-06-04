@@ -4,9 +4,10 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, 
+         :omniauthable, omniauth_providers: %i[github]
 
-  validates :name, presence: true, length: { maximum: 20 }
+  validates :name, presence: true, length: { maximum: 100 }
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -28,5 +29,23 @@ class User < ApplicationRecord
     Post.where(user: [friends.select(:id)])
       .or(Post.where(user: [id]))
       .order(created_at: :desc)
+  end
+
+  def self.from_omniauth(auth)
+    user = User.find_by(email: auth.info.email)
+    if user
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.save
+    else
+      user = User.new
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0,20]
+      user.name = auth.info.name
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.save
+    end
+    user
   end
 end
