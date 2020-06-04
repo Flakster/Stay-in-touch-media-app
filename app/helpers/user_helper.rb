@@ -21,4 +21,8 @@ module UserHelper
       render html: f.status.capitalize unless f.status == 'rejected' || f.status == 'sent'
     end
   end
+
+  def notification_id(sender_id, receiver_id)
+    Friendship.where(sender_id: sender_id, receiver_id: receiver_id).first.id
+  end
 end
