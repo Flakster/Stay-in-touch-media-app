@@ -32,7 +32,7 @@
 
 ## Live Demo
 
-  Will be available soon
+  [Can be seen here](https://social-media-flakster.herokuapp.com/)
 
 ### Prerequisites
 
