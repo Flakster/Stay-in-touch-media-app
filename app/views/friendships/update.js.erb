@@ -1,0 +1,8 @@
+$('.request-response').on ('ajax:success', remove);
+
+function remove(event, data) {
+    $(this).parents(".card").remove()
+    count = $('.cards-container .card').length
+    p = "Notifications (".concat(count).concat(")")
+    $(".notification-count").text(p)
+}

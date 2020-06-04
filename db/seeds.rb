@@ -8,3 +8,8 @@
 100.times do |indx|
     User.create(name: "User #{indx + 1}", email: "user_#{indx + 1}@mail.com", password: '123456')
 end
+
+90.times do |index|
+    Friendship.create(sender_id: index + 2, receiver_id: 1, status: 'pending')
+    Friendship.create(sender_id: 1, receiver_id: index + 2, status: 'sent')
+end

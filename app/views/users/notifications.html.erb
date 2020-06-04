@@ -1,5 +1,6 @@
 <h1 class="has-margin-1 title is-3">Your pending friendship requests</h1>
 
+<div class="cards-container">
 <% @pending.each do |sender| %>
 <div class="card card-extra">
   <div class="card-content">
@@ -10,14 +11,21 @@
   <footer class="card-footer">
     <p class="card-footer-item">
       <span>
-        <%= link_to 'Accept', friendship_path(id: notification_id(sender.id, current_user.id), status: 'friends'), method: :put %>
+        <%= link_to 'Accept', friendship_path(id: notification_id(sender.id, current_user.id), status: 'friends'), 
+        method: :put,
+        class: 'request-response',
+        remote: true %>
       </span>
     </p>
     <p class="card-footer-item">
       <span>
-        <%= link_to 'Reject',friendship_path(id: notification_id(sender.id, current_user.id), status: 'rejected'), method: :put %>
+        <%= link_to 'Reject',friendship_path(id: notification_id(sender.id, current_user.id), status: 'rejected'), 
+        method: :put,
+        class: 'request-response',
+        remote: true %>
       </span>
     </p>
   </footer>
 </div>
 <% end %>
+</div>

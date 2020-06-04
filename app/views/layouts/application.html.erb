@@ -24,7 +24,7 @@
             <%= link_to current_user.name, current_user%>
           </div>
           <div class="menu-item">
-            <%= link_to  "Notifications (#{current_user.senders.count})", users_notifications_path %>
+            <%= link_to  "Notifications (#{current_user.senders.count})", users_notifications_path, class: 'notification-count' %>
           </div>
           <div class="menu-item">
             <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
