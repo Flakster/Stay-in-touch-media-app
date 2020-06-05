@@ -5,7 +5,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, 
-         :omniauthable, omniauth_providers: %i[github facebook]
+         :omniauthable, omniauth_providers: %i[github google_oauth2]
 
   validates :name, presence: true, length: { maximum: 100 }
 

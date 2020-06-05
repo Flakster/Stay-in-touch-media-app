@@ -284,10 +284,7 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
   config.omniauth :github, ENV["GITHUB_CLIENT_ID"], ENV["GITHUB_CLIENT_SECRET"], scope: 'user,public_repo'
-  config.omniauth :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_APP_SECRET"] , 
-  scope: 'publish_stream,email,offline_access,manage_pages',
-  # callback_url: 'http://localhost:3000/auth/facebook/callback'
-  callback_url: 'http://stay-intouch.herokuapp.com/auth/facebook/callback'
+  config.omniauth :google_oauth2, ENV["GOOGLE_CLIENT_ID"], ENV["GOOGLE_CLIENT_SECRET"], access_type: "online"
   # ==> Turbolinks configuration
   # If your app is using Turbolinks, Turbolinks::Controller needs to be included to make redirection work correctly:
   #
