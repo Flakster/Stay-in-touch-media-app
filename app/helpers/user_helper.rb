@@ -25,4 +25,10 @@ module UserHelper
   def notification_id(sender_id, receiver_id)
     Friendship.where(sender_id: sender_id, receiver_id: receiver_id).first.id
   end
+
+  def profile_image
+    unless current_user.gravatar_url.nil?
+      render html: image_tag(current_user.gravatar_url, alt: "#{current_user.name} profile image", class: 'is-rounded')
+    end
+  end
 end

@@ -36,6 +36,7 @@ class User < ApplicationRecord
     if user
       user.provider = auth.provider
       user.uid = auth.uid
+      user.gravatar_url = auth.info.image
       user.save
     else
       user = User.new
@@ -44,6 +45,7 @@ class User < ApplicationRecord
       user.name = auth.info.name
       user.provider = auth.provider
       user.uid = auth.uid
+      user.gravatar_url = auth.info.image
       user.save
     end
     user
