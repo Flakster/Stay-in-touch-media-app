@@ -27,8 +27,8 @@ module UserHelper
   end
 
   def profile_image
-    unless @user.gravatar_url.nil?
-      render html: image_tag(@user.gravatar_url, alt: "#{@user.name} profile image", class: 'is-rounded')
-    end
+    return if @user.gravatar_url.nil?
+
+    render html: image_tag(@user.gravatar_url, alt: "#{@user.name} profile image", class: 'is-rounded')
   end
 end
