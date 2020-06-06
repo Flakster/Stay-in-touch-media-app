@@ -22,20 +22,9 @@
   <div class="flex full-container f-jc-c">
   <strong class='m-1'>Sign in with:</strong>
   <%- resource_class.omniauth_providers.each do |provider| %>
-    <%# <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider)<br /> %> <%#%%>
-      <% if provider.to_s == 'facebook' %>
-        <%= link_to omniauth_authorize_path(resource_name, provider), class: 'm-1 f-o-1' do %>
-          <i class="fab fa-facebook fa-lg"></i> 
-        <% end %>
-      <% elsif provider.to_s == 'google_oauth2' %>
-        <%= link_to omniauth_authorize_path(resource_name, provider), class: 'm-1 f-o-2' do %>
-          <i class="fab fa-google fa-lg"></i> 
-        <% end %>        
-      <% elsif provider.to_s == 'github' %>
-        <%= link_to omniauth_authorize_path(resource_name, provider), class: 'm-1 f-o-3' do %>
-          <i class="fab fa-github fa-lg f-o-3"></i> 
-        <% end %>
-     <% end %>
+    <%= link_to omniauth_authorize_path(resource_name, provider), class: "m-1 f-o-#{provider_order(provider.to_s)}" do %>
+      <i class="fab fa-<%= provider_name(provider.to_s) %> fa-lg"></i> 
+    <% end %>
   <% end %>
   </div>
 <% end %>
