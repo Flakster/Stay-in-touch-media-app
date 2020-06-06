@@ -1,4 +1,4 @@
-# Scaffold for social media app with Ruby on Rails
+# Stay in touch social media app with Ruby on Rails
 
 > This project consists in building a social media app called “Stay in touch” with the following features:
 
