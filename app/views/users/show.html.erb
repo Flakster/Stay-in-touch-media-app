@@ -1,6 +1,6 @@
 <section class="user-section">
   <figure class="image is-128x128">
-    <%= profile_image %>
+    <%= profile_image(@user) %>
   </figure>
   <h2><%= "Name: #{@user.name}" %></h2>
   <%= show_request(@user.id) %>

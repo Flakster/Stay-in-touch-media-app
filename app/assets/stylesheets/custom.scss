@@ -317,6 +317,14 @@ form {
   }
 }
 
+.is-60-percent {
+  width: 60% !important;
+}
+
+.is-100-percent {
+  width: 100% !important;
+}
+
 @media only screen and (min-width: 480px) {
   form {
     width: 60%;
@@ -332,7 +340,7 @@ form {
 
 @media (min-width: 780px) {
   form {
-    width: 40%;
+    width: 100%;
   }
 
   .new_post,

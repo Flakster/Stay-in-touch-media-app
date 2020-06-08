@@ -1,30 +1,64 @@
-<li class="post">
-  <div>
-    <div class='post-attribution' >
-      <%= link_to post.user.name, user_path(post.user), class: 'post-author' %>
+<article class="media">
+  <figure class="media-left">
+    <p class="image is-64x64">
+      <%= profile_image(post.user) %>
+    </p>
+  </figure>
+  <div class="media-content">
+    <div class="content">
+      <p>
+        <strong><%= link_to post.user.name, user_path(post.user), class: 'post-author' %></strong>
+        <br>
+          <%= post.content %>
+        <br>
+        <small class="post-liking"><%= like_or_dislike_btn(post) %> <%= post.created_at.strftime("%Y/%m/%d") %></small>
+      </p>
     </div>
-    <div class='post-liking'>
-      <span class='post-date'> <%= post.created_at.strftime("%Y/%m/%d") %> </span>
-      <%= like_or_dislike_btn(post) %>
-    </div>
-  </div>
-  <p class="post-content">
-    <%= post.content %>
-  </p>
+</article>
 
-  <div class='post-comments-section'>
+<br>
+<br>
+
+<div class='post-comments-section'>
     <% post.comments.each do |comment| %>
-      <div class="post-comments">
-        <p>
-          <b><%= comment.user.name %>:</b> <%= comment.content %>
-        </p>
-        <span> <%= comment.created_at.strftime("%Y/%m/%d") %> </span>
-      </div>
+      <article class="media">
+        <figure class="media-left">
+          <p class="image is-48x48">
+            <%= comment_profile_image(comment.user) %>
+          </p>
+        </figure>
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <strong><%= link_to comment.user.name, comment.user %></strong>
+              <br>
+                <%= comment.content %>
+              <br>
+              <small class='post-liking'><%= comment.created_at.strftime("%Y/%m/%d") %></small>
+            </p>
+          </div>
+        </div>
+      </article>
     <% end %>
 
-    <%= form_for(post.comments.new, url: post_comments_path(post)) do |form| %>
-      <%= form.text_field :content, id: :comment_content, class: 'form-control', placeholder: 'Add new Comment' %>
-      <%= form.submit 'Comment', class: 'btn btn-secondary' %>
-    <% end %>
+</div>
+
+<%= form_for(post.comments.new, url: post_comments_path(post), html: { class: 'media' } ) do |form| %>
+  <figure class="media-left">
+    <p class="image is-64x64">
+      <%= comment_profile_image(current_user) %>
+    </p>
+  </figure>
+  <div class="media-content">
+    <div class="field">
+      <p class="control">
+        <%= form.text_area :content, id: :comment_content, class: 'textarea', placeholder: 'Add a comment...' %>
+      </p>
+    </div>
+    <div class="field">
+      <p class="control">
+        <%= form.submit 'Comment', class: 'btn btn-secondary is-100-percent' %>
+      </p>
+    </div>
   </div>
-</li>
+<% end %>

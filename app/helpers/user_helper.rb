@@ -26,9 +26,19 @@ module UserHelper
     Friendship.where(sender_id: sender_id, receiver_id: receiver_id).first.id
   end
 
-  def profile_image
-    return if @user.gravatar_url.nil?
+  def profile_image(user)
+    if user.gravatar_url.nil?
+      render html: image_tag('https://bulma.io/images/placeholders/128x128.png', alt: 'profile image', class: 'is-rounded')
+    else
+      render html: image_tag(user.gravatar_url, alt: "#{user.name} profile image", class: 'is-rounded')
+    end
+  end
 
-    render html: image_tag(@user.gravatar_url, alt: "#{@user.name} profile image", class: 'is-rounded')
+  def comment_profile_image(user)
+    if user.gravatar_url.nil?
+      render html: image_tag('https://bulma.io/images/placeholders/96x96.png', alt: 'profile image')
+    else
+      render html: image_tag(user.gravatar_url, alt: "#{user.name} profile image")
+    end
   end
 end

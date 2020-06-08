@@ -1,12 +1,26 @@
-<%= form_for(@post) do |form| %>
-  <%= form.label :content %>
-  <%= form.text_field :content, id: :post_content, class: 'form-control', placeholder: 'Add New Post' %>
+<%= form_for(@post, html: { class: 'media is-60-percent' } ) do |form| %>
   <% if @post.errors.full_messages.any? %>
     <p class="errors">
       <%= "Post could not be saved. #{@post.errors.full_messages.join('. ')}" %>
     </p>
   <% end %>
-  <%= form.submit 'Save', class: 'btn btn-primary' %>
+  <figure class="media-left">
+    <p class="image is-96x96">
+      <%= profile_image(current_user) %>
+    </p>
+  </figure>
+  <div class="media-content">
+    <div class="field">
+      <p class="control">
+        <%= form.text_area :content, id: :post_content, class: 'textarea', placeholder: 'Add new post' %>
+      </p>
+    </div>
+    <div class="field">
+      <p class="control">
+        <%= form.submit 'Save', class: 'button is-100-percent' %>
+      </p>
+    </div>
+  </div>
 <% end %>
 
 <article class="timeline">
